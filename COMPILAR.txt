@@ -1,0 +1,40 @@
+INSTRUCCIONES PARA COMPILAR A EXE
+==================================
+
+Si descargaste este archivo, significa que el EXE precompilado no estaba disponible.
+
+OPCIÓN 1: COMPILAR AUTOMÁTICAMENTE (RECOMENDADO)
+================================================
+
+1. Abre CMD o PowerShell como ADMINISTRADOR
+2. Navega a la carpeta del proyecto:
+   cd C:\Users\Esteban\Downloads\system-optimizer-main
+
+3. Ejecuta:
+   python -m pip install pyinstaller psutil
+   pyinstaller --onefile --windowed diagnostico_optimizador.py
+
+4. El EXE estará en: dist\diagnostico_optimizador.exe
+
+OPCIÓN 2: DESCARGA EL EXE PRECOMPILADO
+======================================
+
+Visita: https://github.com/aduken666/system-optimizer/releases
+
+O descárgalo directamente de aquí:
+https://github.com/aduken666/system-optimizer/raw/main/dist/diagnostico_optimizador.exe
+
+REQUISITOS
+==========
+- Python 3.7+ instalado
+- pip (gestor de paquetes de Python)
+- Permisos de administrador
+
+¿NO TIENES PYTHON?
+==================
+Descárgalo desde: https://www.python.org/downloads/
+
+SOPORTE
+=======
+Si tienes problemas, abre un issue en:
+https://github.com/aduken666/system-optimizer/issues
