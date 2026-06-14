@@ -12,6 +12,7 @@ import psutil
 import shutil
 from datetime import datetime
 import ctypes
+import time
 
 def es_admin():
     """Verifica si se ejecuta como administrador"""
@@ -56,7 +57,8 @@ def main():
     try:
         resultado = subprocess.check_output(['systeminfo'], encoding='utf-8', stderr=subprocess.DEVNULL)
         for linea in resultado.split('\n')[:20]:
-            escribir(linea, reporte)
+            if linea.strip():
+                escribir(linea, reporte)
     except Exception as e:
         escribir(f"Error: {e}", reporte)
     
@@ -180,14 +182,13 @@ def main():
     
     for servicio, descripcion in servicios:
         try:
-            # Intenta detener
             os.system(f'net stop {servicio} >nul 2>&1')
             escribir(f"✓ {descripcion} ({servicio}) detenido", reporte)
             optimizaciones_realizadas += 1
         except:
             pass
     
-    # 5. DESFRAGMENTAR DISCO (opcional, solo C:)
+    # 5. DESFRAGMENTAR DISCO (opcional)
     escribir("\n[OPT 5] Analizando disco para optimizar...", reporte)
     try:
         os.system('defrag c: /O >nul 2>&1')
@@ -217,8 +218,8 @@ def main():
     print(f"\n{'='*70}")
     print(f"✓ Reporte guardado en: {reporte}")
     print(f"{'='*70}\n")
-    
-    input("Presiona Enter para cerrar...")
+    print("El programa se cerrará en 5 segundos...")
+    time.sleep(5)
 
 if __name__ == "__main__":
     main()
